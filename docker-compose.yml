@@ -1,0 +1,53 @@
+version: "3.9"
+
+services:
+
+  # ----------------------------
+  # FASTAPI SERVICE
+  # ----------------------------
+  api:
+    build: .
+    container_name: supply_chain_api
+    command: uvicorn api.main:app --host 0.0.0.0 --port 8000
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+
+  # ----------------------------
+  # DASHBOARD SERVICE
+  # ----------------------------
+  dashboard:
+    build: .
+    container_name: supply_chain_dashboard
+    command: python dashboard/app.py
+    ports:
+      - "8050:8050"
+    volumes:
+      - .:/app
+    depends_on:
+      - api
+
+  # ----------------------------
+  # DATABASE
+  # ----------------------------
+  db:
+    image: postgres:15
+    container_name: supply_chain_db
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: supply_chain
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+# ----------------------------
+# VOLUMES
+# ----------------------------
+volumes:
+  postgres_data:
