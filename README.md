@@ -1,6 +1,6 @@
 # 🚀 Supply Chain Risk Intelligence System
 
-An end-to-end AI-powered supply chain risk prediction platform that forecasts disruptions **4–8 weeks in advance** using hybrid time-series modeling, NLP sentiment analysis, and XGBoost classification — all served through a FastAPI backend and a live Plotly Dash dashboard.
+An end-to-end AI-powered supply chain risk prediction platform that forecasts disruptions **4–8 weeks in advance** using hybrid time-series modeling, NLP sentiment analysis, and XGBoost classification — all served through a FastAPI backend and a live Plotly Dash dashboard.    
 
 ---
 
